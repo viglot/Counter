@@ -1,12 +1,21 @@
-var one_day = 1000*60*60*24
+setInterval(function(){
 
-var present_date = new Date();
+    
 
-var christmas_day = new Date(present_date.getFullYear(), 11, 25)
+    let TimeNow = new Date();
+    let goal = new Date("12/31/2021");
 
-if (present_date.getMonth() == 11 && present_date.getDate() > 25)
-christmas_day.setFullYear(christmas_day.getFullYear() + 1)
+    let TimeLeft = goal.getTime() - TimeNow.getTime();
 
-var Result = Math.round(christmas_day.getTime() - present_date.getTime()) / (one_day);
+    document.getElementById("Day").innerHTML = "Days: " + Math.floor(TimeLeft / (1000 * 60 * 60 * 24) );
+    document.getElementById("Hour").innerHTML = "Hours: " + Math.floor( (TimeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60) );
+    document.getElementById("Minutes").innerHTML = "Minutes: " + Math.floor( (TimeLeft % (1000 * 60 * 60)) / (1000 * 60) );
+    document.getElementById("Secounds").innerHTML = "Seconds: " + Math.floor( (TimeLeft % (1000 * 60)) / 1000);
+    //document.getElementById("Tid").innerHTML = Time.getHours() + ":" + Time.getMinutes() + ":" + Time.getSeconds();
+    //document.getElementById("Date").innerHTML = (30 - Time.getDay()) + "-" + (10 - Time.getMonth());
 
+}, 1000);
 
+//(TimeLeft / (1000 * 3600 * 24)).toFixed(0)
+
+               
